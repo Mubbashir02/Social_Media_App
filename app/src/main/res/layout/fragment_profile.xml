@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragment.ProfileFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/header_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@color/white" />
+
+
+
+            <ImageButton
+                android:id="@+id/user_profile_photo"
+                android:contentDescription="profileimage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_below="@+id/header_cover_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-60dp"
+                android:background="#3b5998"
+                android:elevation="5dp"
+                android:padding="20dp"
+                android:scaleType="centerCrop"
+                />
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_cover_image"
+                android:background="#3b5998"
+                android:elevation="4dp"
+                android:paddingBottom="24dp">
+
+
+                <ImageView
+                    android:id="@+id/profile_image_editor"
+                    android:layout_width="38dp"
+                    android:layout_height="36dp"
+                    android:layout_alignBottom="@+id/user_profile_name"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginBottom="39dp"
+                    android:layout_toStartOf="@+id/user_profile_name"
+                    android:background="@drawable/profile_image_editor" />
+
+                <TextView
+                    android:id="@+id/user_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="76dp"
+                    android:text="@string/profile_name"
+                    android:fontFamily="@font/walkwayultrabold"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/user_profile_short_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/walkwaybold"
+                    android:text="Developer"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_layout"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#fff"
+                    android:fontFamily="@font/walkwaybold"
+                    android:clickable="true"
+                    android:elevation="4dp"
+                    android:padding="20dp"
+                    android:text="Muhammad Mubbashir" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/walkwaybold"
+                    android:background="#fff"
+                    android:clickable="true"
+                    android:elevation="4dp"
+                    android:padding="20dp"
+                    android:text="My name is Mubbashir. I am Intern Software Developer" />
+
+                <TextView
+                    android:id="@+id/friend_txt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Friends "
+                    android:textAlignment="center"
+                    android:fontFamily="@font/walkwayultrabold"
+                    android:textSize="24sp"
+                    android:layout_marginTop="30px"
+                    android:textStyle="bold" />
+
+
+                <ListView
+                    android:id="@+id/friend_listview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="181dp"
+                    android:divider="#FFF"
+                    android:fadeScrollbars="false"
+                    android:scrollX="0px"
+                    android:fontFamily="@font/walkwaybold"
+                    android:scrollY="0px"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbarSize="20dp"
+                    android:scrollbarStyle="outsideOverlay"
+                    android:scrollbars="vertical"/>
+
+                <TextView
+                    android:id="@+id/follower_txt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/walkwayultrabold"
+                    android:text="Followers"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:layout_marginTop="30px"
+                    android:textStyle="bold" />
+
+
+                <ListView
+                    android:id="@+id/follower_listview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="165dp"
+                    android:divider="#FFF"
+                    android:fadeScrollbars="false"
+                    android:scrollX="0px"
+                    android:scrollY="0px"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:fontFamily="@font/walkwaybold"
+                    android:scrollbarSize="20dp"
+                    android:scrollbarStyle="outsideOverlay"
+                    android:scrollbars="vertical">
+
+                </ListView>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+
+
+    </ScrollView>
+
+
+</FrameLayout>

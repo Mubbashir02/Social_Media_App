@@ -2,7 +2,9 @@ package com.example.firstapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class RegisterScreen extends AppCompatActivity {
+
+
 
     public EditText email_register;
     public EditText password_register;
@@ -45,12 +49,15 @@ public class RegisterScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_screen);
 
+
+
         email_register = (EditText) findViewById(R.id.email_signup);
         password_register = (EditText) findViewById(R.id.password_signup);
         phone_register = (EditText) findViewById(R.id.phone_signup);
         confirm_password_register = (EditText) findViewById(R.id.confirmpassword_signup);
         Register_btn = (Button) findViewById(R.id.register_btn);
         sign_move = (TextView)findViewById(R.id.register_move);
+
 
         Register_btn.setOnClickListener(new View.OnClickListener() {
             @Override

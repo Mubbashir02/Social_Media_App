@@ -14,5 +14,7 @@
     <string name="register">Register</string>
     <string name="re_type_password">Re-type Password</string>
     <string name="your_name">Full Name</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map_key" translatable="false">AIzaSyDkMaQxCRWirz8VWbBRLaUZ6Cta-MOMhHY</string>
 
 </resources>

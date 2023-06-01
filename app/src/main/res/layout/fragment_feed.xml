@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_hint"
+    android:id="@+id/feed_fragment"
+    tools:context=".fragment.FeedFragment">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle1"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:fadeScrollbars="true"
+        android:scrollbars="vertical" />
+
+
+
+
+
+</FrameLayout>
