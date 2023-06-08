@@ -1,5 +1,6 @@
 package com.example.firstapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -11,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 import org.w3c.dom.Text;
 
@@ -42,6 +49,7 @@ public class RegisterScreen extends AppCompatActivity {
 
 
     public Button Register_btn;
+    private FirebaseAuth auth;
 
 
     @Override
@@ -57,6 +65,8 @@ public class RegisterScreen extends AppCompatActivity {
         confirm_password_register = (EditText) findViewById(R.id.confirmpassword_signup);
         Register_btn = (Button) findViewById(R.id.register_btn);
         sign_move = (TextView)findViewById(R.id.register_move);
+        auth =FirebaseAuth.getInstance();
+
 
 
         Register_btn.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +104,7 @@ public class RegisterScreen extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Confirm password must be same to password ", Toast.LENGTH_LONG).show();
                 }
                 else{
+                    FirebaseRegisterUser(register_email_value,register_password_value);
                     Intent intent = new Intent(getApplicationContext(),LoginPage.class);
                     intent.putExtra("email",register_email_value);
                     intent.putExtra("password",register_password_value);
@@ -113,10 +124,20 @@ public class RegisterScreen extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void FirebaseRegisterUser(String email, String password) {
+        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterScreen.this,new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(RegisterScreen.this, "Data POST", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(RegisterScreen.this, "Data Not Post", Toast.LENGTH_SHORT).show();
+                }
 
-
-
-
+            }
+        });
     }
 }

@@ -1,5 +1,6 @@
 package com.example.firstapplication;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -8,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -18,6 +20,8 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -43,6 +47,8 @@ import com.google.maps.android.SphericalUtil;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -201,4 +207,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
     }
+
 }

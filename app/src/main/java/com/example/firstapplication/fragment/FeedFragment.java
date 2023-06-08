@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.firstapplication.Date_time;
 import com.example.firstapplication.Likes;
@@ -51,6 +52,7 @@ public class FeedFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_feed, container, false);
 
         recyclerView = view.findViewById(R.id.recycle1);
+
         userlist = new ArrayList<>();
         contentlist = new ArrayList<String>();
         date_timeslist = new ArrayList<>();
