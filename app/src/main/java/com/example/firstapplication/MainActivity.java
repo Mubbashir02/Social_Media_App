@@ -65,11 +65,6 @@ public class MainActivity extends AppCompatActivity {
     public String token;
     FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
 
-
-
-
-
-
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);

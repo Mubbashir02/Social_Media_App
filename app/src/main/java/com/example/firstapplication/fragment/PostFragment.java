@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -21,10 +22,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.firstapplication.Firebase.Post;
 import com.example.firstapplication.HomeScreen;
 import com.example.firstapplication.MainActivity;
 import com.example.firstapplication.MapsActivity;
 import com.example.firstapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -93,6 +102,44 @@ public class PostFragment extends Fragment {
                     Log.d("date_check", currentDateTimeString.toString());
                     content_array.add(content);
                     Log.d("Pass Content", content_array.toString());
+                    DatabaseReference mDatabase;
+                    mDatabase = FirebaseDatabase.getInstance().getReference();
+                    Date date = new Date();
+                    FirebaseDatabase contentdata = FirebaseDatabase.getInstance();
+                    Post post_data = new Post(mDatabase.push().getKey().toString(),content,String.valueOf(date.getTime()));
+
+                    mDatabase.child("posts").push().setValue(post_data);
+                    mDatabase.child("posts").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase_post", "Error getting data", task.getException());
+                            }
+                            else {
+                                Log.d("firebase_post2", String.valueOf(task.getResult().getValue()));
+                            }
+
+                        }
+                    });
+
+                    content_post.getText().clear();
+
+//                    message_ref.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            String value = snapshot.getValue(String.class);
+//                            Log.d("get_value_data_message", value);
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//                            Log.w("debug_message", "Failed to read value.", error.toException());
+//
+//
+//                        }
+//                    });
+
+
     //                    Intent intent = new Intent(getActivity().getApplicationContext(), FeedFragment.class);
     //                    Bundle bundle = new Bundle();
     //                    bundle.putString("final_content",content_post.getText().toString());

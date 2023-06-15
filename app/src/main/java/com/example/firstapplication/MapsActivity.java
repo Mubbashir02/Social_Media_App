@@ -3,6 +3,7 @@ package com.example.firstapplication;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -62,6 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     TextView disance_value;
     TextView dest_input;
     FusedLocationProviderClient fusedLocationProviderClient;
+    CardView bike_selector;
+    CardView car_selector;
 
     private static final int REQUEST_CODE = 101;
 
@@ -75,6 +78,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         dest_input = (TextView) findViewById(R.id.dest_value);
         dest_address_input = (TextView) findViewById(R.id.dest_address_value);
         disance_value = (TextView) findViewById(R.id.distance_value);
+        bike_selector = findViewById(R.id.bike_selector);
+        car_selector = findViewById(R.id.car_selector);
+        bike_selector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                car_selector.setBackgroundResource(R.drawable.no_item_selector);
+                bike_selector.setBackgroundResource(R.drawable.on_item_select);
+            }
+        });
+        car_selector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bike_selector.setBackgroundResource(R.drawable.no_item_selector);
+                car_selector.setBackgroundResource(R.drawable.on_item_select);
+            }
+        });
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();

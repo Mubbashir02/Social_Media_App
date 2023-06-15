@@ -2,6 +2,7 @@ package com.example.firstapplication.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResult;
@@ -22,12 +23,21 @@ import android.widget.ListView;
 
 import com.example.firstapplication.MainActivity;
 import com.example.firstapplication.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment {
     ImageButton user_profile_photo;
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 22;
+
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
 
     public ProfileFragment() {
@@ -77,8 +87,12 @@ public class ProfileFragment extends Fragment {
                 Intent igallaery = new Intent(Intent.ACTION_PICK);
                 igallaery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(igallaery,GALLEY_REQ_CODE);
+
+
             }
         });
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         freindlist = (ListView) view.findViewById(R.id.friend_listview);
         friendstore = new ArrayList<>();
